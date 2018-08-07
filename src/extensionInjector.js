@@ -7,5 +7,13 @@ function addScript(src) {
     (document.body || document.head || document.documentElement).appendChild(script);
 }
 
-addScript("dist/extension.js");
+function addCss(src) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = chrome.extension.getURL(src);
+    (document.body || document.head || document.documentElement).appendChild(link);
+}
 
+addScript("dist/extension.js");
+addCss("dist/selectize.default.css");
